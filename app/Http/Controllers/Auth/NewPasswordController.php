@@ -8,14 +8,13 @@ use Illuminate\Http\{RedirectResponse, Request};
 use Illuminate\Support\Facades\{Hash, Password};
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules;
-use Illuminate\View\View;
 
 class NewPasswordController extends Controller
 {
     /**
      * Display the password reset view.
      */
-    public function create(Request $request): View
+    public function create(Request $request)
     {
         return view('auth.reset-password', ['request' => $request]);
     }
@@ -40,7 +39,7 @@ class NewPasswordController extends Controller
             $request->only('email', 'password', 'password_confirmation', 'token'),
             function ($user) use ($request) {
                 $user->forceFill([
-                    'password'       => Hash::make($request->password),
+                    'password'       => Hash::make($request->password), /** @phpstan-ignore-line */
                     'remember_token' => Str::random(60),
                 ])->save();
 

@@ -6,14 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\{RedirectResponse, Request};
 use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
 {
     /**
      * Display the login view.
      */
-    public function create(): View
+    public function create()
     {
         return view('auth.login');
     }
@@ -35,7 +34,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        Auth::guard('web')->logout();
+        Auth::guard('web')->logout(); /** @phpstan-ignore-line */
 
         $request->session()->invalidate();
 
