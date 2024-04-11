@@ -29,9 +29,6 @@ jobs:
       
     - name: Installing Package.json
       run: npm install
-
-    - name: Installing Husk
-      run: npm install -g husk
       
     - name: Build Assets
       run: npm run build
