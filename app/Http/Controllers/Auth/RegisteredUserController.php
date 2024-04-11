@@ -9,7 +9,6 @@ use Illuminate\Http\{RedirectResponse, Request};
 use Illuminate\Support\Facades\{Auth, Hash};
 use Illuminate\Validation\Rules;
 
-
 class RegisteredUserController extends Controller
 {
     /**
